@@ -1,0 +1,61 @@
+java.util.NoSuchElementException: next on empty iterator
+occurred in the presentation compiler.
+
+action parameters:
+offset: 2035
+uri: file:///C:/Users/joeli/OneDrive/Documents/APEX/MQ-APEX-Project/jiri-algorithms-test/SecondMarkerAllocator/src/Main.java
+text:
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        ArrayList<Academic> academics = new ArrayList<Academic>();
+        academics.add(new Academic("Rex"));
+        academics.add(new Academic("Nick"));
+        academics.add(new Academic("Hazer"));
+
+        ArrayList<ThesisTopic> thesisTopics = new ArrayList<ThesisTopic>();
+        thesisTopics.add(new ThesisTopic("I love Software Engineering", "Research your love for Software Engineering", Profession.SOFTWARE_ENGINEERING));
+        thesisTopics.add(new ThesisTopic("SE0", "epicSETIME", Profession.SOFTWARE_ENGINEERING));
+        thesisTopics.add(new ThesisTopic("SE1", "epicSETIME", Profession.SOFTWARE_ENGINEERING));
+        thesisTopics.add(new ThesisTopic("SE2", "epicSETIME", Profession.SOFTWARE_ENGINEERING));
+        thesisTopics.add(new ThesisTopic("SE3", "epicSETIME", Profession.SOFTWARE_ENGINEERING));
+        thesisTopics.add(new ThesisTopic("ME0", "epicMETIME", Profession.MECHANICAL_ENGINEERING));
+        thesisTopics.add(new ThesisTopic("ME1", "epicMETIME", Profession.MECHANICAL_ENGINEERING));
+        thesisTopics.add(new ThesisTopic("ME2", "epicMETIME", Profession.MECHANICAL_ENGINEERING));
+        thesisTopics.add(new ThesisTopic("SEME0", "epicSEMETIME", new Profession[] {Profession.SOFTWARE_ENGINEERING, Profession.MECHANICAL_ENGINEERING}));
+        thesisTopics.add(new ThesisTopic("SEME1", "epicSEMETIME", new Profession[] {Profession.SOFTWARE_ENGINEERING, Profession.MECHANICAL_ENGINEERING}));
+        thesisTopics.add(new ThesisTopic("SEME2", "epicSEMETIME", new Profession[] {Profession.SOFTWARE_ENGINEERING, Profession.MECHANICAL_ENGINEERING}));
+    
+        for (int i = 0; i < 4; i++) {
+            academics.get(0).addTopic(thesisTopics.get(i));
+        }
+
+        for (int i = 4; i < 7; i++) {
+            academics.get(1).addTopic(thesisTopics.get(i));
+        }
+
+        for (int i = 7; i < 11; i++) {
+            academics.get(2).addTopic(thesisTopics.get(i));
+        }
+
+        @@for (int i = 0; i < academics.size(); i++) {
+            academics.get(i).printTopics();
+            System.out.println();
+        }
+    }
+}
+
+
+
+error stacktrace:
+scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
+	scala.collection.Iterator$$anon$19.next(Iterator.scala:971)
+	scala.collection.mutable.MutationTracker$CheckedIterator.next(MutationTracker.scala:76)
+	scala.collection.IterableOps.head(Iterable.scala:222)
+	scala.collection.IterableOps.head$(Iterable.scala:222)
+	scala.collection.AbstractIterable.head(Iterable.scala:933)
+	dotty.tools.dotc.interactive.InteractiveDriver.run(InteractiveDriver.scala:168)
+	scala.meta.internal.pc.MetalsDriver.run(MetalsDriver.scala:45)
+	scala.meta.internal.pc.HoverProvider$.hover(HoverProvider.scala:34)
+	scala.meta.internal.pc.ScalaPresentationCompiler.hover$$anonfun$1(ScalaPresentationCompiler.scala:325)

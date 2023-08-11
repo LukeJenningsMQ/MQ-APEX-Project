@@ -1,0 +1,6 @@
+public enum Profession {
+    SOFTWARE_ENGINEERING,
+    MECHANICAL_ENGINEERING,
+    GABAGOO,
+    WABADOO
+}

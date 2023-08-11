@@ -1,0 +1,57 @@
+java.util.NoSuchElementException: next on empty iterator
+occurred in the presentation compiler.
+
+action parameters:
+offset: 851
+uri: file:///C:/Users/joeli/OneDrive/Documents/APEX/MQ-APEX-Project/jiri-algorithms-test/SecondMarkerAllocator/src/ThesisTopic.java
+text:
+import java.util.ArrayList;
+
+public class ThesisTopic {
+    String title;
+    String desc;
+    ArrayList<Profession> professions = new ArrayList<Profession>();
+
+
+    public ThesisTopic(String title, String desc, Profession newPro) {
+        this.title = title;
+        this.desc = desc;
+
+        professions.add(newPro);
+    }
+
+    public ThesisTopic(String title, String desc, Profession[] newPro) {
+        this.title = title;
+        this.desc = desc;
+
+        for (int i = 0; i < newPro.length; i++) {
+            professions.add(newPro[i]);
+        }
+    }
+
+    public void addProfession(Profession newPro) {
+        professions.add(newPro);
+    }
+
+    public void print() {
+        System.out.print(title + " " + desc);
+
+        for (int i = 0; i < professions.size(); i++) {
+            switch (professions.get(i@@))
+        }
+    }
+}
+
+
+
+error stacktrace:
+scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
+	scala.collection.Iterator$$anon$19.next(Iterator.scala:971)
+	scala.collection.mutable.MutationTracker$CheckedIterator.next(MutationTracker.scala:76)
+	scala.collection.IterableOps.head(Iterable.scala:222)
+	scala.collection.IterableOps.head$(Iterable.scala:222)
+	scala.collection.AbstractIterable.head(Iterable.scala:933)
+	dotty.tools.dotc.interactive.InteractiveDriver.run(InteractiveDriver.scala:168)
+	scala.meta.internal.pc.MetalsDriver.run(MetalsDriver.scala:45)
+	scala.meta.internal.pc.completions.CompletionProvider.completions(CompletionProvider.scala:46)
+	scala.meta.internal.pc.ScalaPresentationCompiler.complete$$anonfun$1(ScalaPresentationCompiler.scala:119)

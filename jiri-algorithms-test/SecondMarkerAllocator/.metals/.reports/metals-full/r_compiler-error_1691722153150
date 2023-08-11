@@ -1,0 +1,51 @@
+java.util.NoSuchElementException: next on empty iterator
+occurred in the presentation compiler.
+
+action parameters:
+offset: 396
+uri: file:///C:/Users/joeli/OneDrive/Documents/APEX/MQ-APEX-Project/jiri-algorithms-test/SecondMarkerAllocator/src/Academic.java
+text:
+import java.util.ArrayList;
+
+public class Academic {
+    String name;
+    ArrayList<ThesisTopic> involvedThesisTopics = new ArrayList<ThesisTopic>();
+
+    public Academic(String name) {
+        this.name = name;
+    }
+
+    public void addTopic(ThesisTopic topic) {
+        involvedThesisTopics.add(topic);
+    }
+
+    public double returnScore(Profession profession) {
+        doubl@@e score = 0;
+        for (int i = 0; i < involvedThesisTopics.size(); i++) {
+            score += involvedThesisTopics.get(i).hasProfession(profession);
+        }
+        score /= involvedThesisTopics.size();
+        return score;
+    }
+
+    public void printTopics() {
+        System.out.println(name + " is supervising:");
+        for (int i = 0; i < involvedThesisTopics.size(); i++) {
+            involvedThesisTopics.get(i).print();
+        }
+    }
+}
+
+
+
+error stacktrace:
+scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
+	scala.collection.Iterator$$anon$19.next(Iterator.scala:971)
+	scala.collection.mutable.MutationTracker$CheckedIterator.next(MutationTracker.scala:76)
+	scala.collection.IterableOps.head(Iterable.scala:222)
+	scala.collection.IterableOps.head$(Iterable.scala:222)
+	scala.collection.AbstractIterable.head(Iterable.scala:933)
+	dotty.tools.dotc.interactive.InteractiveDriver.run(InteractiveDriver.scala:168)
+	scala.meta.internal.pc.MetalsDriver.run(MetalsDriver.scala:45)
+	scala.meta.internal.pc.HoverProvider$.hover(HoverProvider.scala:34)
+	scala.meta.internal.pc.ScalaPresentationCompiler.hover$$anonfun$1(ScalaPresentationCompiler.scala:325)
